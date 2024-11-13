@@ -1,0 +1,37 @@
+
+{
+  "BigQuery Schema":[
+    {
+      "name": "id_Unidade",
+      "type": "STRING"
+    },
+    {
+      "name": "id_Pedido",
+      "type": "STRING"
+    },
+    {
+      "name": "Tipo_Pedido",
+      "type": "STRING"
+    },
+    {
+      "name": "Data_Pedido",
+      "type": "DATE"
+    },
+    {
+      "name": "Vlr_Pedido",
+      "type": "FLOAT"
+    },
+    {
+      "name": "Endereco_Entrega",
+      "type": "STRING"
+    },
+    {
+      "name": "Taxa_Entrega",
+      "type": "FLOAT"
+    },
+    {
+      "name": "Status",
+      "type": "STRING"
+    }
+  ]
+}

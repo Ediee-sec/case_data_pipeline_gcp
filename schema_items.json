@@ -1,0 +1,29 @@
+
+{
+  "BigQuery Schema":[
+    {
+      "name": "id_Pedido",
+      "type": "STRING"
+    },
+    {
+      "name": "id_Item_Pedido",
+      "type": "STRING"
+    },
+    {
+      "name": "id_Produto",
+      "type": "STRING"
+    },
+    {
+      "name": "Qtd",
+      "type": "INTEGER"
+    },
+    {
+      "name": "Vlr_Item",
+      "type": "FLOAT64"
+    },
+    {
+      "name": "Observacao",
+      "type": "STRING"
+    }
+  ]
+}
