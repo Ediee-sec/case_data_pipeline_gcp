@@ -157,5 +157,52 @@ Taxa_Entrega  FLOAT64<span class="token punctuation">,</span>
 </ul>
 </li>
 </ol>
+<h3 id="transferir-os-dados-do-postgres-para-o-big-query">5. Transferir os dados do Postgres para o big query</h3>
+<ol>
+<li>Criar as tabelas em branco no bigquery</li>
+</ol>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token comment">-- Criação da tabela PAIS</span>
+<span class="token keyword">CREATE</span>  <span class="token operator">OR</span>  REPLACE  <span class="token keyword">TABLE</span>  <span class="token punctuation">`</span>casedatalakers<span class="token punctuation">.</span>dw_mr_health<span class="token punctuation">.</span>PAIS<span class="token punctuation">`</span>  <span class="token punctuation">(</span>
+Id_Pais  INT64<span class="token punctuation">,</span>
+Nome_Pais  STRING
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- Criação da tabela ESTADO</span>
+<span class="token keyword">CREATE</span>  <span class="token operator">OR</span>  REPLACE  <span class="token keyword">TABLE</span>  <span class="token punctuation">`</span>casedatalakers<span class="token punctuation">.</span>dw_mr_health<span class="token punctuation">.</span>ESTADO<span class="token punctuation">`</span>  <span class="token punctuation">(</span>
+Id_Estado  INT64<span class="token punctuation">,</span>
+Id_Pais  INT64<span class="token punctuation">,</span>
+Nome_Estado  STRING
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- Criação da tabela UNIDADE</span>
+<span class="token keyword">CREATE</span>  <span class="token operator">OR</span>  REPLACE  <span class="token keyword">TABLE</span>  <span class="token punctuation">`</span>casedatalakers<span class="token punctuation">.</span>dw_mr_health<span class="token punctuation">.</span>UNIDADE<span class="token punctuation">`</span>  <span class="token punctuation">(</span>
+Id_Unidade  INT64<span class="token punctuation">,</span>
+Nome_Unidade  STRING<span class="token punctuation">,</span>
+Id_Estado  INT64
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- Criação da tabela PRODUTO</span>
+<span class="token keyword">CREATE</span>  <span class="token operator">OR</span>  REPLACE  <span class="token keyword">TABLE</span>  <span class="token punctuation">`</span>casedatalakers<span class="token punctuation">.</span>dw_mr_health<span class="token punctuation">.</span>PRODUTO<span class="token punctuation">`</span>  <span class="token punctuation">(</span>
+Id_Produto  INT64<span class="token punctuation">,</span>
+Nome_Produto  STRING
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ol start="2">
+<li>Criar o Pipeline usando o Dataflow, usar o template Postgres To BigQuery
+<ul>
+<li>
+<p>Preencher corretamente os parâmetros obrigatórios</p>
+</li>
+<li>
+<p>Parâmetro OPCIONAL que <strong>deve</strong> ser preenchido:<br>
+<img src="https://i.imgur.com/Nizlmgh.png" alt="Descrição da imagem"></p>
+</li>
+<li>
+<p><strong>EXEMPLO:</strong><br>
+<img src="https://i.imgur.com/i0eHqx4.png" alt="EEEE"></p>
+</li>
+</ul>
+</li>
+</ol>
 <h4 id="com-este-pipeline-resolveremos-o-problema-do-gerente-de-ti-o-processo-ficará-totalmente-transparente-sendo-necessário-apenas-o-responsável-de-cada-filial-inserir-o-arquivo-de-sua-região-no-cloud-storage">Com este pipeline resolveremos o problema do Gerente de TI, o processo ficará totalmente transparente sendo necessário apenas o responsável de cada filial inserir o arquivo de sua região no cloud storage</h4>
 
